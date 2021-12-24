@@ -16,30 +16,30 @@
 
 #include "bool.h"
 
-class lru
-  {public :
+class lru {
+public :
 
-   int  *pred;
-   int  *suc;
-   int  size;
-   
-   int  cand;
-   int  fresh;
-   int  free;
+    int  *pred;
+    int  *suc;
+    int  size;
+
+    int  cand;
+    int  fresh;
+    int  free;
 
 
-        lru    (int size);
-        ~lru   ();
+    lru    (int size);
+    ~lru   ();
 
-   void dump      ();
-   void clear     ();
-   void remove    (int  id);
-   void access    (int  id);
-   int  add       (bool &with_remove);
-   int  candidate (bool &with_remove);
-   int  freshest  (int  no);
+    void dump      ();
+    void clear     ();
+    void remove    (int  id);
+    void access    (int  id);
+    int  add       (bool &with_remove);
+    int  candidate (bool &with_remove);
+    int  freshest  (int  no);
 
- };
+};
 
 #endif
 

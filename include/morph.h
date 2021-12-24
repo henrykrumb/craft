@@ -5,8 +5,8 @@
 #include "objects.h"
 #include "ppm.h"
 
-void morph (ppm      *pa, 
-            ppm      *pb, 
+void morph (ppm      *pa,
+            ppm      *pb,
             ppm      *pc,
             triangle ta,
             triangle tb,

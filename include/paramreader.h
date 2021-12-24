@@ -47,27 +47,27 @@ void check_params (int num);
 #define max_params       1000
 #define max_param_length 80
 
-class paramreader
-  {public:
+class paramreader {
+public:
 
-     char name  [max_params][max_param_length];
-     char value [max_params][max_param_length];
-     int  num_params;
-     FILE *f    [max_includes];
-     int  num_includes;
+    char name  [max_params][max_param_length];
+    char value [max_params][max_param_length];
+    int  num_params;
+    FILE *f    [max_includes];
+    int  num_includes;
 
 
-          paramreader (const char *param_file_name);
+    paramreader (const char *param_file_name);
 
-   void   dump       ();
-   char * s_param    (const char name []);
-   double d_param    (char name []);
-   int    i_param    (const char name []);
-   int    param_no   (const char name []);
-   void   set        (char name [], char value []);
-   void   read_sym   (char sym  [], bool &is_eof);
-   int    max_i_name ();
+    void   dump       ();
+    char * s_param    (const char name []);
+    double d_param    (char name []);
+    int    i_param    (const char name []);
+    int    param_no   (const char name []);
+    void   set        (char name [], char value []);
+    void   read_sym   (char sym  [], bool &is_eof);
+    int    max_i_name ();
 
-  };
+};
 
 #endif

@@ -51,7 +51,7 @@
 #define cmd_die            24
 #define cmd_train_doktor   25
 #define cmd_heal           26
-#define cmd_sad            27 
+#define cmd_sad            27
 #define cmd_const_wall     28
 #define cmd_command        29
 #define cmd_concentrate    30
@@ -75,11 +75,11 @@
 #define cmd_built_bship    49
 #define cmd_enter          50
 #define cmd_entered        51
-#define cmd_talk           52 
+#define cmd_talk           52
 
 #define land_stump         10
 #define land_bush          11
-#define land_wood          12 
+#define land_wood          12
 #define land_mud           20
 #define land_grass         40
 #define land_water         60
@@ -116,17 +116,17 @@
 #define pic_tents          600
 
 #define xpic_worker_idle   1200
-#define xpic_worker_move   1300 
+#define xpic_worker_move   1300
 #define xpic_worker_work   1400
 #define xpic_worker_sack   2200
 #define xpic_worker_wood   2300
 
 #define xpic_knight_idle   1500
-#define xpic_knight_move   1600 
+#define xpic_knight_move   1600
 #define xpic_knight_fight  1700
 
 #define xpic_pawn_idle     1900
-#define xpic_pawn_move     2000 
+#define xpic_pawn_move     2000
 #define xpic_pawn_fight    2100
 
 #define xpic_archer_idle   2400
@@ -155,13 +155,13 @@
 #define xpic_trader_wood   3900
 
 #define xpic_scout_idle    4000
-#define xpic_scout_move    4100 
+#define xpic_scout_move    4100
 #define xpic_scout_hide    4200
 
 #define xpic_ship1_idle    4400
 #define xpic_ship1_empty   4500
-#define xpic_ship1_move    4600 
-#define xpic_ship_zombi    4800  
+#define xpic_ship1_move    4600
+#define xpic_ship_zombi    4800
 #define xpic_ship_on_dock  5100
 
 #define xpic_ship2_idle    5200
@@ -183,7 +183,7 @@
 #define xspeed_zombi          10
 #define xspeed_schrott        10
 #define xspeed_swim           10
-#define xspeed_water          50 
+#define xspeed_water          50
 #define xspeed_hit            8
 #define xspeed_building_zombi 10
 #define xspeed_archer_hit     15
@@ -301,7 +301,7 @@
 #define wood_ship2         500
 #define price_docks        1200
 #define wood_docks         600
-#define amour_docks        95 
+#define amour_docks        95
 
 #define guard_range        7
 #define scope_cata         8
@@ -330,7 +330,7 @@
 #define amour_scout        1
 
 #define amour_worker        0
-#define amour_building     25 
+#define amour_building     25
 
 #define power_trader        0
 #define amour_trader       20
@@ -352,17 +352,17 @@
 
 #define vr_man               7
 
-struct land_prop
-  {int  overview_color;
-   int  wood;
-   int  money;
-   bool walk_possible;
-   bool with_hl;
-   bool is_forest;
-   bool is_grass;
-   bool is_dig;
-   bool is_water;
-   bool can_grow;
-  };
+struct land_prop {
+    int  overview_color;
+    int  wood;
+    int  money;
+    bool walk_possible;
+    bool with_hl;
+    bool is_forest;
+    bool is_grass;
+    bool is_dig;
+    bool is_water;
+    bool can_grow;
+};
 
 #endif

@@ -10,21 +10,21 @@
 #ifndef xtimer_h
 #define xtimer_h
 
-class xtimer
-  {private :
+class xtimer {
+private :
 
-     long   stamp;
-     double dt;
+    long   stamp;
+    double dt;
 
-   public :
+public :
 
-     void   start ();
-     void   cont  ();
-     void   stop  ();
-     double read  ();
-     double exec  ();
+    void   start ();
+    void   cont  ();
+    void   stop  ();
+    double read  ();
+    double exec  ();
 
-  };
+};
 
 long x_sys_time ();
 void delay (int dt);

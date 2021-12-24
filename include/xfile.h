@@ -19,7 +19,7 @@ time_t f_date             (char f_name []);
 bool   f_exists           (const char f_name []);
 void   f_open             (FILE *&f, const char name [], const char mode []);
 void   f_open_with_extend (FILE *&f, char name [], char mode [], int max_no);
-char   *f_getline         (FILE *f,  char line [], int  max_length); 
+char   *f_getline         (FILE *f,  char line [], int  max_length);
 
 char   *f_postfix         (char full_path []);
 char   *f_name            (const char full_path []);

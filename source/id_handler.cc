@@ -20,6 +20,6 @@
 
 int id_counter = 0;
 
-int new_id ()
-  {return ++id_counter;
-  }
+int new_id () {
+    return ++id_counter;
+}

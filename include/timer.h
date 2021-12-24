@@ -10,21 +10,21 @@
 #ifndef timer_h
 #define timer_h
 
-class timer
-  {private :
+class timer {
+private :
 
-     long   stamp;
-     double dt;
+    long   stamp;
+    double dt;
 
-   public :
+public :
 
-     void   start ();
-     void   stop  ();
-     double read  ();
-     double exec  ();
-     void   delay (int dt);
+    void   start ();
+    void   stop  ();
+    double read  ();
+    double exec  ();
+    void   delay (int dt);
 
-  };
+};
 
 long sys_time ();
 

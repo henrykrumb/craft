@@ -28,11 +28,11 @@ bool is_water         (int id, int x, int y, int gid);
 
 int  land_profile     (int x, int y, int min_d);
 
-bool anything_on_land (int x, int y); 
+bool anything_on_land (int x, int y);
 
 int  land_num_il ();
 int  land_x_il   (int i);
-int  land_y_il   (int i); 
+int  land_y_il   (int i);
 
 void trace_il    ();
 

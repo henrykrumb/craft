@@ -25,61 +25,61 @@
 
 #define default_button_font  "-misc-*-*-*-*-*-*-*-*-*-*-*-*-*"
 
-class button
-  {public:
+class button {
+public:
 
-     Pixmap background;
-     win    *w;
-     
-     char   button_dir [128];
-     char   label      [128];
-     bool   is_icon;
-     bool   with_repeat;
-     
-     bool   is_pressed;
+    Pixmap background;
+    win    *w;
 
-     int    x;
-     int    y;
-     int    dx;
-     int    dy;
+    char   button_dir [128];
+    char   label      [128];
+    bool   is_icon;
+    bool   with_repeat;
 
-     int    x_label;
-     int    y_label;
+    bool   is_pressed;
 
-     int    dx_border;
-     int    dy_border;
+    int    x;
+    int    y;
+    int    dx;
+    int    dy;
 
-     int    border_color_light;
-     int    border_color_dark;
-     int    button_color;
-     int    label_color;
+    int    x_label;
+    int    y_label;
 
-     char   label_font [128];
-     
+    int    dx_border;
+    int    dy_border;
 
-     button (win  *b_w,
-             const char b_label [],
-             int  b_x,
-             int  b_y,
-             bool b_with_repeat = false,
-             int  b_dx          = by_default,
-             int  b_dy          = by_default,
-             int  b_dx_border   = by_default,
-             int  b_dy_border   = by_default,
-             int  b_label_color = by_default,
-             char *b_label_font = NULL);
-             
-     
-     ~button ();
+    int    border_color_light;
+    int    border_color_dark;
+    int    button_color;
+    int    label_color;
 
-     void press ();
-     void press (bool mode);
-     bool eval  (int  &button);
-     bool eval  ();
-     void write (const char label_string []);
-     void write (char label_string [], bool is_pressed);
+    char   label_font [128];
 
-  };
+
+    button (win  *b_w,
+            const char b_label [],
+            int  b_x,
+            int  b_y,
+            bool b_with_repeat = false,
+            int  b_dx          = by_default,
+            int  b_dy          = by_default,
+            int  b_dx_border   = by_default,
+            int  b_dy_border   = by_default,
+            int  b_label_color = by_default,
+            char *b_label_font = NULL);
+
+
+    ~button ();
+
+    void press ();
+    void press (bool mode);
+    bool eval  (int  &button);
+    bool eval  ();
+    void write (const char label_string []);
+    void write (char label_string [], bool is_pressed);
+
+};
 
 #endif
 

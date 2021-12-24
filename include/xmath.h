@@ -29,7 +29,7 @@ int  b_reset (int current, int bno);
 
 int i_abs    (int a);
 int i_sign   (int a);
-int i_min    (int a, int b); 
+int i_min    (int a, int b);
 int i_max    (int a, int b);
 int i_mean   (int a, int b);
 int i_random (int lower_bound, int upper_bound);

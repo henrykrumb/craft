@@ -22,7 +22,7 @@ void background (win *w, int x, int y, int dx, int dy);
 void frame      (win *w);
 void frame      (win *w,
                  int x, int y,
-                 int dx, int dy, 
+                 int dx, int dy,
                  int color_1, int color_2);
 
 bool yes        (win *w, char host [], const char question []);

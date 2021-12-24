@@ -17,115 +17,52 @@
 #include "io.h"
 #include "paramreader.h"
 
-xbm::xbm (char name [])
-  {FILE *xbm_data;
+xbm::xbm (char name []) {
+    FILE *xbm_data;
 
-    /* open_data */      {char f_name [128];
+    /* open_data */      {
+        char f_name [128];
 
-      strcpy (f_name, name);
-      f_open (xbm_data, f_name, "r");
-     };
-    /* get_size */     {char d [128];
-
-     fscanf (xbm_data, "%127s %127s %d", d, d, &dx);
-     fscanf (xbm_data, "%127s %127s %d", d, d, &dy);
-      /* skip_line */      {while (fgetc (xbm_data) != '\n')
-        {
-        };
-     };
-      /* skip_line */      {while (fgetc (xbm_data) != '\n')
-        {
-        };
-     };
+        strcpy (f_name, name);
+        f_open (xbm_data, f_name, "r");
     };
-    /* alloc_data */      {data = new int [dx * dy];
-     };
-    /* read_pixels */      {int b;
+    /* get_size */     {
+        char d [128];
 
-      for (int y = 0; y < dy; y++)
-        for (int x = 0; x < dx; x++)
-           /* read_pixel */      { /* perhaps_get_b */      {char c;
-
-      if (x % 8 == 0)
-          /* get_new_b */      {char bb [128];
-
-      fscanf (xbm_data, "%127s", bb);
-      b = hextoint (substring (bb, 2));
-     };
-     };
-      data [ind (x, y)] = b_on (b, x % 8);
-     }; 
-     };
-   fclose (xbm_data);
-
-
-
-
-
-
-
-
-
-  }
-
-xbm::xbm (int bdx, int bdy)
-  { /* store_size */     {dx = bdx;
-     dy = bdy;
+        fscanf (xbm_data, "%127s %127s %d", d, d, &dx);
+        fscanf (xbm_data, "%127s %127s %d", d, d, &dy);
+        /* skip_line */      {
+            while (fgetc (xbm_data) != '\n') {
+            };
+        };
+        /* skip_line */      {
+            while (fgetc (xbm_data) != '\n') {
+            };
+        };
     };
-    /* alloc_data */      {data = new int [dx * dy];
-     };
+    /* alloc_data */      {
+        data = new int [dx * dy];
+    };
+    /* read_pixels */      {
+        int b;
 
+        for (int y = 0; y < dy; y++)
+            for (int x = 0; x < dx; x++)
+                /* read_pixel */      { /* perhaps_get_b */      {
+                    char c;
 
+                    if (x % 8 == 0)
+                        /* get_new_b */      {
+                        char bb [128];
 
-  }
-
-xbm::~xbm ()
-  {delete (data);
-  }
-
-void xbm::save (char name [])
-  {FILE *f;
-
-    /* open_f */      {f_open (f, name, "w");
-     };
-    /* write_size */      {fprintf (f, "#define x_width %d\n", dx);
-      fprintf (f, "#define x_height %d\n", dy);
-      fprintf  (f, "static char x_bits[] = {");
-     };
-    /* write_data */      {int c = 0;
-      int b = 0;
-      int x;
-      int y;
-
-      for (y = 0; y < dy; y++)
-        for (x = 0; x < dx; x++)
-          { /* write_byte */      { /* perhaps_flush */      {if ( /* on_byte */      ((x % 8) == 0) && ! (x == 0))
-          /* flush_byte */      {if (! (x == 8 && y == 0))
-         fprintf (f, ", ");
-      if (c % 12 == 0)
-         fprintf (f, "\n");      c++;
-      fprintf (f, "0x%s", inttohex (b)); 
-      b = 0;
-     };
-     };
-      if (data [ind (x, y)])
-          b = b_set (b, x % 8);
-     };
-            /* perhaps_flush_last_byte */      {if (!  /* on_byte */      ((x % 8) == 0) && x == dx-1)
-          /* flush_byte */      {if (! (x == 8 && y == 0))
-         fprintf (f, ", ");
-      if (c % 12 == 0)
-         fprintf (f, "\n");      c++;
-      fprintf (f, "0x%s", inttohex (b)); 
-      b = 0;
-     };
-     };
-          };
-     };
-    /* write_tail */ 
-     {fprintf (f, "};");
-     };
-   fclose (f);
+                        fscanf (xbm_data, "%127s", bb);
+                        b = hextoint (substring (bb, 2));
+                    };
+                };
+                data [ind (x, y)] = b_on (b, x % 8);
+            };
+    };
+    fclose (xbm_data);
 
 
 
@@ -135,19 +72,105 @@ void xbm::save (char name [])
 
 
 
+}
 
-  }
+xbm::xbm (int bdx, int bdy) {
+    /* store_size */     {
+        dx = bdx;
+        dy = bdy;
+    };
+    /* alloc_data */      {
+        data = new int [dx * dy];
+    };
 
-void xbm::bit (int x, int y, int &b)
-  {b = data [ind (x, y)];
-  }
 
-void xbm::set (int x, int y, int b)
-  {data [ind (x, y)] = b;
-  }
 
-int xbm::ind (int x, int y)
-  {return y * dx + x;
-  }
+}
+
+xbm::~xbm () {
+    delete (data);
+}
+
+void xbm::save (char name []) {
+    FILE *f;
+
+    /* open_f */      {
+        f_open (f, name, "w");
+    };
+    /* write_size */      {
+        fprintf (f, "#define x_width %d\n", dx);
+        fprintf (f, "#define x_height %d\n", dy);
+        fprintf  (f, "static char x_bits[] = {");
+    };
+    /* write_data */      {
+        int c = 0;
+        int b = 0;
+        int x;
+        int y;
+
+        for (y = 0; y < dy; y++)
+            for (x = 0; x < dx; x++) {
+                /* write_byte */      { /* perhaps_flush */      {
+                        if ( /* on_byte */      ((x % 8) == 0) && ! (x == 0))
+                            /* flush_byte */      {
+                            if (! (x == 8 && y == 0)) {
+                                fprintf (f, ", ");
+                            }
+                            if (c % 12 == 0) {
+                                fprintf (f, "\n");
+                            }
+                            c++;
+                            fprintf (f, "0x%s", inttohex (b));
+                            b = 0;
+                        };
+                    };
+                    if (data [ind (x, y)]) {
+                        b = b_set (b, x % 8);
+                    }
+                };
+                /* perhaps_flush_last_byte */      {
+                    if (!  /* on_byte */      ((x % 8) == 0) && x == dx-1)
+                        /* flush_byte */      {
+                        if (! (x == 8 && y == 0)) {
+                            fprintf (f, ", ");
+                        }
+                        if (c % 12 == 0) {
+                            fprintf (f, "\n");
+                        }
+                        c++;
+                        fprintf (f, "0x%s", inttohex (b));
+                        b = 0;
+                    };
+                };
+            };
+    };
+    /* write_tail */
+    {
+        fprintf (f, "};");
+    };
+    fclose (f);
+
+
+
+
+
+
+
+
+
+
+}
+
+void xbm::bit (int x, int y, int &b) {
+    b = data [ind (x, y)];
+}
+
+void xbm::set (int x, int y, int b) {
+    data [ind (x, y)] = b;
+}
+
+int xbm::ind (int x, int y) {
+    return y * dx + x;
+}
 
 

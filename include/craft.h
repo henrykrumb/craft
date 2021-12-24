@@ -77,7 +77,7 @@ extern bool           is_battle;
 extern bool           is_self;
 extern bool           is_rnd_land;
 
-extern land_prop      land_properties [max_land_types]; 
+extern land_prop      land_properties [max_land_types];
 
 extern object_handler *objects;
 
@@ -87,6 +87,6 @@ extern int            active [max_players];
 
 extern char           host  [max_players][128];
 extern char           name  [max_players][128];
-extern double         speed [max_players];           
+extern double         speed [max_players];
 
 #endif

@@ -1,6 +1,6 @@
 #ifndef table_h
 #define table_h
- 
+
 /*======================================================================*/
 /*= CHANGES AND UPDATES                                                =*/
 /*======================================================================*/
@@ -42,84 +42,84 @@
 
 #define no_lru_candidate -1
 
-class table
-  {public : 
+class table {
+public :
 
-     int  number_of_columns;
-     int  number_of_rows;
-     int  column_length;
-     int  id;
-     int  data_size;
-     bool was_write_access;
-     bool is_lru;
-     int  row_no;
- 
-     lru  *lru_queue;
-     int  lru_size;
-     int  column_type  [max_columns];
-     int  column_size  [max_columns];
-     char column_name  [max_columns][128];
-     int  column_index [max_columns];
-     char *data;
+    int  number_of_columns;
+    int  number_of_rows;
+    int  column_length;
+    int  id;
+    int  data_size;
+    bool was_write_access;
+    bool is_lru;
+    int  row_no;
 
-     char name [128];
-     char dir  [128];
+    lru  *lru_queue;
+    int  lru_size;
+    int  column_type  [max_columns];
+    int  column_size  [max_columns];
+    char column_name  [max_columns][128];
+    int  column_index [max_columns];
+    char *data;
 
-     table  (char dir [], char name [], bool &is_new, int lru_size = 0);
-     ~table ();
+    char name [128];
+    char dir  [128];
 
-     void  check_bound (int adr, int row_no, int column_no, const char action []);
-     void  save        ();
-     void  load        ();
+    table  (char dir [], char name [], bool &is_new, int lru_size = 0);
+    ~table ();
 
-     void  rename      (char  new_dir [], char new_name []);
-     void  rename      (char  new_name []);
-     void  copy        (table *destination); 
+    void  check_bound (int adr, int row_no, int column_no, const char action []);
+    void  save        ();
+    void  load        ();
 
-     int   add_column  (const char name [], int type);
-     int   column_no   (char name []);
-     int   num_columns (); 
+    void  rename      (char  new_dir [], char new_name []);
+    void  rename      (char  new_name []);
+    void  copy        (table *destination);
 
-     int   candidate   (bool &with_remove);
-     int   freshest    (int no);
-     int   num_rows    ();
-     int   add_row     ();
-     int   insert_row  (int row_no);
-     void  delete_row  (int row_no);
-     void  clear       ();
-     void  access_row  (int row_no);
-    
+    int   add_column  (const char name [], int type);
+    int   column_no   (char name []);
+    int   num_columns ();
 
-     int    read_int    (int row_no, int column_no);
-     float  read_float  (int row_no, int column_no);
-     char*  read_text   (int row_no, int column_no);
-     point  read_point  (int row_no, int column_no);
-     plane  read_plane  (int row_no, int column_no);
-     cube   read_cube   (int row_no, int column_no);
-     config read_config (int row_no, int column_no);
-     vector read_vector (int row_no, int column_no);
+    int   candidate   (bool &with_remove);
+    int   freshest    (int no);
+    int   num_rows    ();
+    int   add_row     ();
+    int   insert_row  (int row_no);
+    void  delete_row  (int row_no);
+    void  clear       ();
+    void  access_row  (int row_no);
 
-     void  write       (int row_no, int column_no, int    value);
-     void  write       (int row_no, int column_no, float  value);
-     void  write       (int row_no, int column_no, double value);
-     void  write       (int row_no, int column_no, char   value []);
-     void  write       (int row_no, int column_no, point  value);
-     void  write       (int row_no, int column_no, plane  value);
-     void  write       (int row_no, int column_no, cube   value);
-     void  write       (int row_no, int column_no, config value);
-     void  write       (int row_no, int column_no, vector value);
 
-     int   append      (int column_no, int    value);
-     int   append      (int column_no, float  value);
-     int   append      (int column_no, double value);
-     int   append      (int column_no, char   value []);
-     int   append      (int column_no, point  value);
-     int   append      (int column_no, plane  value);
-     int   append      (int column_no, cube   value);
-     int   append      (int column_no, config value);
-     int   append      (int column_no, vector value);
+    int    read_int    (int row_no, int column_no);
+    float  read_float  (int row_no, int column_no);
+    char*  read_text   (int row_no, int column_no);
+    point  read_point  (int row_no, int column_no);
+    plane  read_plane  (int row_no, int column_no);
+    cube   read_cube   (int row_no, int column_no);
+    config read_config (int row_no, int column_no);
+    vector read_vector (int row_no, int column_no);
 
- };
+    void  write       (int row_no, int column_no, int    value);
+    void  write       (int row_no, int column_no, float  value);
+    void  write       (int row_no, int column_no, double value);
+    void  write       (int row_no, int column_no, char   value []);
+    void  write       (int row_no, int column_no, point  value);
+    void  write       (int row_no, int column_no, plane  value);
+    void  write       (int row_no, int column_no, cube   value);
+    void  write       (int row_no, int column_no, config value);
+    void  write       (int row_no, int column_no, vector value);
+
+    int   append      (int column_no, int    value);
+    int   append      (int column_no, float  value);
+    int   append      (int column_no, double value);
+    int   append      (int column_no, char   value []);
+    int   append      (int column_no, point  value);
+    int   append      (int column_no, plane  value);
+    int   append      (int column_no, cube   value);
+    int   append      (int column_no, config value);
+    int   append      (int column_no, vector value);
+
+};
 
 /*----------------------------------------------------------------------*/
 /* MODULE table handler (deklarations)                                  */
@@ -129,7 +129,7 @@ class table
 #define paged           1
 #define max_open_tables 5000
 
-void open_table_handler  (char global_table_dir [], 
+void open_table_handler  (char global_table_dir [],
                           char local_table_dir  []);
 void close_table_handler (bool flush_buffers);
 void dump_table_handler  ();

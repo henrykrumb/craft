@@ -15,45 +15,45 @@
 
 #include "bool.h"
 
-class ppm
-  {public:
+class ppm {
+public:
 
-     int  *r_data;
-     int  *g_data;
-     int  *b_data;
-     int  *cache;
+    int  *r_data;
+    int  *g_data;
+    int  *b_data;
+    int  *cache;
 
-     int  dx;
-     int  dy;
-     bool is_cache;
-     bool cache_loaded;
+    int  dx;
+    int  dy;
+    bool is_cache;
+    bool cache_loaded;
 
-     ppm        (int dx, int dy, int r, int g, int b);
-     ppm        (char name [], bool with_cache = false);
-     ppm        (ppm *p);
-     ~ppm       ();
+    ppm        (int dx, int dy, int r, int g, int b);
+    ppm        (char name [], bool with_cache = false);
+    ppm        (ppm *p);
+    ~ppm       ();
 
 
-     void save  (char name []);
+    void save  (char name []);
 
-     void rgb   (int x, int y, int &r, int &g, int &b);     
-     void set   (int x, int y, int r, int g, int b);
-    
-     void get_map (win *w, Pixmap &p);
- 
-     void show  (win *w, int x, int y1);
+    void rgb   (int x, int y, int &r, int &g, int &b);
+    void set   (int x, int y, int r, int g, int b);
 
-     void show  (win *w,
-                 int wx, int wy, int wdx, int wdy,
-                 int x0, int y0, int scale);
+    void get_map (win *w, Pixmap &p);
 
-     int  ind   (int x, int y);
+    void show  (win *w, int x, int y1);
 
-     bool equal (ppm *p, int x, int y);
+    void show  (win *w,
+                int wx, int wy, int wdx, int wdy,
+                int x0, int y0, int scale);
 
-   };
+    int  ind   (int x, int y);
 
-     void copy  (ppm *dest, ppm *src);
+    bool equal (ppm *p, int x, int y);
+
+};
+
+void copy  (ppm *dest, ppm *src);
 
 
 #endif

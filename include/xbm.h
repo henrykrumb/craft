@@ -14,27 +14,27 @@
 #define xbm_h
 
 
-class xbm
-  {public:
+class xbm {
+public:
 
-     int *data;
+    int *data;
 
-     int dx;
-     int dy;
- 
+    int dx;
+    int dy;
 
-     xbm       (char name []);
-     xbm       (int  dx, int dy);
-     ~xbm      ();
 
-     void save (char name []);
+    xbm       (char name []);
+    xbm       (int  dx, int dy);
+    ~xbm      ();
 
-     void bit  (int x, int y, int &b);   
-     void set  (int x, int y, int b);
-    
-     int  ind  (int x, int y);
+    void save (char name []);
 
-   };
+    void bit  (int x, int y, int &b);
+    void set  (int x, int y, int b);
+
+    int  ind  (int x, int y);
+
+};
 
 
 #endif

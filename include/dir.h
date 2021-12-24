@@ -9,4 +9,4 @@ int  dir_back  (int dir);
 int  fdir      (int dx, int dy);
 int  left_dist (int dir1, int dir2);
 
-#endif  
+#endif

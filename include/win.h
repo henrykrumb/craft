@@ -18,7 +18,7 @@
 /* Includes                                                             */
 /*                                                                      */
 /*======================================================================*/
- 
+
 #include "stdlib.h"
 #include "stdio.h"
 #include "string.h"
@@ -153,19 +153,19 @@ int   win_color     (char color_name   []);
 
 #define max_poly_points 20
 
-class polyline
-  {public :
+class polyline {
+public :
 
-     int    n;
-     XPoint p [max_poly_points];
+    int    n;
+    XPoint p [max_poly_points];
 
-          polyline  ();
-          ~polyline ();
+    polyline  ();
+    ~polyline ();
 
-     void add       (int x, int y);
-     void close     ();
+    void add       (int x, int y);
+    void close     ();
 
-  };
+};
 
 /*----------------------------------------------------------------------*/
 /* CLASS win (deklarations)                                             */
@@ -178,174 +178,174 @@ class polyline
 #define by_default       -3
 #define keybuf_size      256
 
-class win
-  {public :
+class win {
+public :
 
-     Colormap      cmap;
-     Display       *mydisplay;
-     Window        mywindow;
-     int           myscreen;
-     GC            mygc;		
-     unsigned long myforeground;
-     unsigned long mybackground;
-     XSizeHints    *myhint;
-     XFontStruct   *font_info;
+    Colormap      cmap;
+    Display       *mydisplay;
+    Window        mywindow;
+    int           myscreen;
+    GC            mygc;
+    unsigned long myforeground;
+    unsigned long mybackground;
+    XSizeHints    *myhint;
+    XFontStruct   *font_info;
 
-     long          event_mask;
-     bool          is_enable;
-     bool          is_alien;
-     bool          with_fix;
-     char          name [128];
-     int           open_x;
-     int           open_y;
-     int           open_dx;
-     int           open_dy;
-     int           w_dx;
-     int           w_dy;
+    long          event_mask;
+    bool          is_enable;
+    bool          is_alien;
+    bool          with_fix;
+    char          name [128];
+    int           open_x;
+    int           open_y;
+    int           open_dx;
+    int           open_dy;
+    int           w_dx;
+    int           w_dy;
 
-     int           last_best_color;
+    int           last_best_color;
 
-     unsigned long last_pixel;
-     int           last_r;
-     int           last_g;
-     int           last_b;
-     bool          is_last_pixel;
+    unsigned long last_pixel;
+    int           last_r;
+    int           last_g;
+    int           last_b;
+    bool          is_last_pixel;
 
-     static char   fix_name [128];
-     static char   fix_dir  [128];
-     static bool   fix_initialized;
+    static char   fix_name [128];
+    static char   fix_dir  [128];
+    static bool   fix_initialized;
 
-     int           colors  [max_colors];
-     int           color_r [max_colors];
-     int           color_g [max_colors];
-     int           color_b [max_colors];
-     int           num_colors;
+    int           colors  [max_colors];
+    int           color_r [max_colors];
+    int           color_g [max_colors];
+    int           color_b [max_colors];
+    int           num_colors;
 
-     char          inbuffer   [keybuf_size];
-     int           keybuffer  [keybuf_size];
-     char          cntlbuffer [keybuf_size][32];
-     int           keycount;
-     int           act_key;
-     int           press_cnt;
+    char          inbuffer   [keybuf_size];
+    int           keybuffer  [keybuf_size];
+    char          cntlbuffer [keybuf_size][32];
+    int           keycount;
+    int           act_key;
+    int           press_cnt;
 
-     bool          mouse_inside;
-     int           mouse_x;
-     int           mouse_y;
+    bool          mouse_inside;
+    int           mouse_x;
+    int           mouse_y;
 
-     bool          mouse_press [3];
-     int           mouse_ex    [max_mouse_events];
-     int           mouse_ey    [max_mouse_events];
-     int           mouse_event [max_mouse_events];
-     int           mouse_eid   [max_mouse_events];
-     int           num_mouse_events;
-     int           event_mark;
-     int           event_id;
+    bool          mouse_press [3];
+    int           mouse_ex    [max_mouse_events];
+    int           mouse_ey    [max_mouse_events];
+    int           mouse_event [max_mouse_events];
+    int           mouse_eid   [max_mouse_events];
+    int           num_mouse_events;
+    int           event_mark;
+    int           event_id;
 
-          win  (char title []);
+    win  (char title []);
 
-          win  (const char title [],
-                const char host  [],
-                int  x,
-                int  y, 
-                int  dx,
-                int  dy,
-                bool enable        = true,
-                bool resize_enable = false);
-          win  (win  *parent,
-                const char title [],
-                char host  [],
-                int  x,
-                int  y, 
-                int  dx,
-                int  dy,
-                bool enable        = true,
-                bool resize_enable = false);  
-          ~win ();
+    win  (const char title [],
+          const char host  [],
+          int  x,
+          int  y,
+          int  dx,
+          int  dy,
+          bool enable        = true,
+          bool resize_enable = false);
+    win  (win  *parent,
+          const char title [],
+          char host  [],
+          int  x,
+          int  y,
+          int  dx,
+          int  dy,
+          bool enable        = true,
+          bool resize_enable = false);
+    ~win ();
 
-     void   iconify          ();
-     void   fix              ();
-     void   fix_pos          (int &x,  int &y);
-     void   fix_size         (int &dx, int &dy);
-     void   set_cursor       (char name []);
-     void   set_cursor       (int cursor);
-     void   set_color        (int r, int g, int b);
-     void   win_rgb          (int color, int &r, int &g, int b);
-     int    win_color        (int r, int g, int b);
-     void   set_color        (int color);
-     void   set_background   (int color);
-     void   function         (int func);
-     void   shift            (int x1, int y1, int x2, int y2, int dx, int dy);
-     void   pixel            (int x, int y);
-     void   pixel            (Pixmap p, int x, int y);
-     void   line             (int x1, int y1, int x2, int y2);
-     void   box              (int x1, int y1, int x2, int y2);
-     void   fill             (int x1, int y1, int dx, int dy);
-     void   move             (int x,  int y,  int x1, int y1, int dx, int dy);
-     bool   on               ();
-     bool   mouse            (int &x, int &y, int &button);
-     bool   mouse            (int &x, int &y, int &ex, int &ey, int &button);
-     bool   mouse_is_pressed (int button);
-     bool   is_mouse         (int &xe, int &ye, int &button);
-     void   mark_mouse       ();
-     void   scratch_mouse    ();
-     void   clear            ();
-     void   set_font         (const char name []);
-     void   text_size        (const char string [], int &dx, int &dy);
-     void   write            (int x, int y, const char   string []);
-     void   write            (int x, int y, double d);
-     void   write            (int x, int y, int    i);
-     void   set_clip         (int x, int y, int dx, int dy);
-     void   show_map         (int x, int y, char name []);
-     void   show_map         (int x, int y, Pixmap m, int dx, int dy);
-     void   show_map         (int x, int y,
-                              int s_x, int s_y, Pixmap m, int dx, int dy);
-     void   show_map         (int x, int y, Pixmap m, int dx, int dy, 
-                              Pixmap mask, int clip_x, int clip_y);
-     void   show_map         (int x, int y, Pixmap m, int dx, int dy, 
-                              Pixmap mask);
-      void show_map          (Pixmap m,
-                              Pixmap mask,
-                              int    x_source,
-                              int    y_source,
-                              int    x_screen,
-                              int    y_screen,
-                              int    dx,
-                              int    dy, 
-                              int    x_mask,
-                              int    y_mask);
-     void   load_map         (char name [], Pixmap &m, int &dx, int &dy);
-     void   store_map        (char name [], int x, int y, int dx, int dy);
-     void   store_map        (Pixmap &p, int x, int y, int dx, int dy);
-     void   store_map        (Pixmap &p, int x, int y, int dx, int dy,
-                              Pixmap mask);
-     void   create_map       (Pixmap &p, int dx, int dy);
-     void   delete_map       (Pixmap &p);
-     void   sync             ();
-     void   idle             (bool mode);
-     char   inchar           ();
-     char   inchar           (int &key);
-     char   inchar           (int &key, char *cntl);
-     int    getkey           ();
-     int    x                ();
-     int    y                ();
-     int    dx               ();
-     int    dy               ();
-     void   tick             (bool just_raised);
-     void   tick             ();
-     void   alloc_color      (const char name [], int no);
-     void   create_color_map ();
-     void   draw             (polyline *p);
-     void   fill             (polyline *p);
-     void   xsync            ();
+    void   iconify          ();
+    void   fix              ();
+    void   fix_pos          (int &x,  int &y);
+    void   fix_size         (int &dx, int &dy);
+    void   set_cursor       (char name []);
+    void   set_cursor       (int cursor);
+    void   set_color        (int r, int g, int b);
+    void   win_rgb          (int color, int &r, int &g, int b);
+    int    win_color        (int r, int g, int b);
+    void   set_color        (int color);
+    void   set_background   (int color);
+    void   function         (int func);
+    void   shift            (int x1, int y1, int x2, int y2, int dx, int dy);
+    void   pixel            (int x, int y);
+    void   pixel            (Pixmap p, int x, int y);
+    void   line             (int x1, int y1, int x2, int y2);
+    void   box              (int x1, int y1, int x2, int y2);
+    void   fill             (int x1, int y1, int dx, int dy);
+    void   move             (int x,  int y,  int x1, int y1, int dx, int dy);
+    bool   on               ();
+    bool   mouse            (int &x, int &y, int &button);
+    bool   mouse            (int &x, int &y, int &ex, int &ey, int &button);
+    bool   mouse_is_pressed (int button);
+    bool   is_mouse         (int &xe, int &ye, int &button);
+    void   mark_mouse       ();
+    void   scratch_mouse    ();
+    void   clear            ();
+    void   set_font         (const char name []);
+    void   text_size        (const char string [], int &dx, int &dy);
+    void   write            (int x, int y, const char   string []);
+    void   write            (int x, int y, double d);
+    void   write            (int x, int y, int    i);
+    void   set_clip         (int x, int y, int dx, int dy);
+    void   show_map         (int x, int y, char name []);
+    void   show_map         (int x, int y, Pixmap m, int dx, int dy);
+    void   show_map         (int x, int y,
+                             int s_x, int s_y, Pixmap m, int dx, int dy);
+    void   show_map         (int x, int y, Pixmap m, int dx, int dy,
+                             Pixmap mask, int clip_x, int clip_y);
+    void   show_map         (int x, int y, Pixmap m, int dx, int dy,
+                             Pixmap mask);
+    void show_map          (Pixmap m,
+                            Pixmap mask,
+                            int    x_source,
+                            int    y_source,
+                            int    x_screen,
+                            int    y_screen,
+                            int    dx,
+                            int    dy,
+                            int    x_mask,
+                            int    y_mask);
+    void   load_map         (char name [], Pixmap &m, int &dx, int &dy);
+    void   store_map        (char name [], int x, int y, int dx, int dy);
+    void   store_map        (Pixmap &p, int x, int y, int dx, int dy);
+    void   store_map        (Pixmap &p, int x, int y, int dx, int dy,
+                             Pixmap mask);
+    void   create_map       (Pixmap &p, int dx, int dy);
+    void   delete_map       (Pixmap &p);
+    void   sync             ();
+    void   idle             (bool mode);
+    char   inchar           ();
+    char   inchar           (int &key);
+    char   inchar           (int &key, char *cntl);
+    int    getkey           ();
+    int    x                ();
+    int    y                ();
+    int    dx               ();
+    int    dy               ();
+    void   tick             (bool just_raised);
+    void   tick             ();
+    void   alloc_color      (const char name [], int no);
+    void   create_color_map ();
+    void   draw             (polyline *p);
+    void   fill             (polyline *p);
+    void   xsync            ();
 
-     Window grab             (Display *dsp, Window wnd, char name []);
+    Window grab             (Display *dsp, Window wnd, char name []);
 
-     void   get_image        (XImage *&i, int x, int y, int dx, int dy);
-     void   put_image        (XImage *i, int x, int y, int dx, int dy);
-     void   get_color        (XImage *i, int x, int y, int &r, int &g, int &b);
-     void   set_pixel        (XImage *i, int x, int y, int color);
-     void   ppm              (char file_name [], int x, int y, int dx, int dy);
+    void   get_image        (XImage *&i, int x, int y, int dx, int dy);
+    void   put_image        (XImage *i, int x, int y, int dx, int dy);
+    void   get_color        (XImage *i, int x, int y, int &r, int &g, int &b);
+    void   set_pixel        (XImage *i, int x, int y, int color);
+    void   ppm              (char file_name [], int x, int y, int dx, int dy);
 
- };
+};
 
 #endif

@@ -12,21 +12,21 @@
 #define max_members 50
 
 
-class cluster
-  {public :
+class cluster {
+public :
 
-   int anz  [max_types];
-   int x    [max_members];
-   int y    [max_members];
-   int id   [max_members];
-   int prio [max_members];
-   int num_members;
+    int anz  [max_types];
+    int x    [max_members];
+    int y    [max_members];
+    int id   [max_members];
+    int prio [max_members];
+    int num_members;
 
-   cluster  (char name []);
-   ~cluster ();
+    cluster  (char name []);
+    ~cluster ();
 
-   int match (int color);
-   
- };
+    int match (int color);
+
+};
 
 #endif

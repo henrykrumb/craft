@@ -22,11 +22,11 @@ struct plane;
 /* point (declarations)                                                 */
 /*----------------------------------------------------------------------*/
 
-struct point
-  {double x;
-   double y;
-   double z;
-  };
+struct point {
+    double x;
+    double y;
+    double z;
+};
 
 point  new_point   (double x, double y, double z);
 void   print       (point p);
@@ -57,11 +57,11 @@ point  rotate      (point p,     line  axis, double angle);
 /* vector (declarations)                                                */
 /*----------------------------------------------------------------------*/
 
-struct vector
-  {double dx;
-   double dy;
-   double dz;
-  };
+struct vector {
+    double dx;
+    double dy;
+    double dz;
+};
 
 vector new_vector  (line l);
 vector new_vector  (double dx, double dy, double dz);
@@ -101,10 +101,10 @@ void   get_gen    (point  p,
 /* line (declarations)                                                  */
 /*----------------------------------------------------------------------*/
 
-struct line
-  {point p0;
-   point p1;
-  };
+struct line {
+    point p0;
+    point p1;
+};
 
 line          new_line (point p0, point p1);
 bool operator ==       (line l1, line l2);
@@ -115,11 +115,11 @@ line          expand   (line l, double extent);
 /* triangle (declarations)                                              */
 /*----------------------------------------------------------------------*/
 
-struct triangle
-  {point p0;
-   point p1;
-   point p2;
-  };
+struct triangle {
+    point p0;
+    point p1;
+    point p2;
+};
 
 triangle new_triangle (point p0, point p1, point p2);
 void     hull     (triangle t, point &pmin, point &pmax);
@@ -129,26 +129,26 @@ bool     inside   (triangle t, point p);
 /* rectangle (declarations)                                             */
 /*----------------------------------------------------------------------*/
 
-struct rectangle
-  {point p0;
-   point p1;
-   point p2;
-   point p3;
-  };
+struct rectangle {
+    point p0;
+    point p1;
+    point p2;
+    point p3;
+};
 
 rectangle new_rectangle (point p0, point p1, point p2, point p3);
 rectangle new_rectangle (double p [12]);
-  
+
 /*----------------------------------------------------------------------*/
 /* cube (declarations)                                                  */
 /*----------------------------------------------------------------------*/
 
-struct cube
-  {point p0;
-   point p1;
-   point p2;
-   point p3;
-  };
+struct cube {
+    point p0;
+    point p1;
+    point p2;
+    point p3;
+};
 
 cube   new_cube       (point  p0, point p1, point p2, point p3);
 cube   new_cube       (point  p, double dx, double dy, double dz);
@@ -164,9 +164,9 @@ cube   rotate         (cube c, point p, vector axis, double angle);
 cube   rotate         (cube c, line axis, double angle);
 void   edges          (cube c, line edge_list [12]);
 plane  xplane         (cube  c, int side_no);
-void   xplane         (cube  c,  int   side_no, 
+void   xplane         (cube  c,  int   side_no,
                        point &p0, point &p1, point &p2, point &pl);
-void   xplane         (cube  c,  int corner, int   side_no, 
+void   xplane         (cube  c,  int corner, int   side_no,
                        point &p0, point &p1, point &p2, point &pl);
 bool   hulls_disjunct (cube c1, cube c2);
 bool   disjunct       (cube  c1, cube  c2, bool with_trace = false);
@@ -198,9 +198,9 @@ double dist           (cube c,  point p);
 
 #define max_config_size 10
 
-struct config
-  {double v [max_config_size];
-  };
+struct config {
+    double v [max_config_size];
+};
 
 config new_config          (double v []);
 config nil_config          ();
@@ -219,11 +219,11 @@ config sign                (config c1);
 /* plane (declarations)                                                 */
 /*----------------------------------------------------------------------*/
 
-struct plane
-  {point p0;
-   point p1;
-   point p2;
-  };
+struct plane {
+    point p0;
+    point p1;
+    point p2;
+};
 
 plane  new_plane   (point p0, point p1, point p2);
 plane  new_plane   (vector v0, vector v1);
@@ -244,12 +244,12 @@ double angle       (plane p1, plane p2);
 
 #define max_scene_elements 200
 
-struct scene
-  {int  num_elements;
-   char name  [128];
-   cube cubes [max_scene_elements];
-   char names [max_scene_elements][128];
-  };
+struct scene {
+    int  num_elements;
+    char name  [128];
+    cube cubes [max_scene_elements];
+    char names [max_scene_elements][128];
+};
 
 scene new_scene (char s_name []);
 void  add       (scene &s, cube c, char c_name []);

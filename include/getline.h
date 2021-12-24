@@ -6,58 +6,58 @@
 #include "buttons.h"
 #include "bool.h"
 
-class craft_getline
-  {public:
+class craft_getline {
+public:
 
-   win     *w;
-   int     x;
-   int     y;
-   int     dx;
-   int     dy;
-   char    name [128];   
+    win     *w;
+    int     x;
+    int     y;
+    int     dx;
+    int     dy;
+    char    name [128];
 
-   bool    with_history;
-   history *hist;
-   button  *hist_button;
+    bool    with_history;
+    history *hist;
+    button  *hist_button;
 
-   int    c_light;
-   int    c_dark;
-   int    c_background;
-   int    c_foreground;
-   int    c_cursor;
+    int    c_light;
+    int    c_dark;
+    int    c_background;
+    int    c_foreground;
+    int    c_cursor;
 
-   int     pos_0;
-   int     pos;
-   char    *line;
-   int     lx;
-   int     ly;   
-   int     key;
-   int     key_cnt;
-   bool    is_active;
-   bool    was_deactive;
-   bool    is_single_char;
-   
-   craft_getline      (const char name [],
-                       win  *w,
-                       char string [],
-                       int  x,
-                       int  y,
-                       int  dx,
-                       int  dy,
-                       bool with_history     = false,
-                       bool show_histroy_top = false,
-                       bool single_char      = false);
+    int     pos_0;
+    int     pos;
+    char    *line;
+    int     lx;
+    int     ly;
+    int     key;
+    int     key_cnt;
+    bool    is_active;
+    bool    was_deactive;
+    bool    is_single_char;
 
-   ~craft_getline     ();
+    craft_getline      (const char name [],
+                        win  *w,
+                        char string [],
+                        int  x,
+                        int  y,
+                        int  dx,
+                        int  dy,
+                        bool with_history     = false,
+                        bool show_histroy_top = false,
+                        bool single_char      = false);
 
-   bool on               ();
-   void check_activation ();
-   void refresh          ();
-   void active           (bool mode);
-   bool eval             ();
-   bool get              ();
+    ~craft_getline     ();
 
-  }; 
+    bool on               ();
+    void check_activation ();
+    void refresh          ();
+    void active           (bool mode);
+    bool eval             ();
+    bool get              ();
+
+};
 
 #endif
 
