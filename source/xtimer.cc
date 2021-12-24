@@ -1,24 +1,21 @@
+#include <chrono>
 
 #include "xtimer.h"
 
 #include "unistd.h"
-#include "sys/time.h"
 #include "signal.h"
 
-extern "C"
-{
-    int ftime (struct timeb *);
-}
 
 /*----------------------------------------------------------------------*/
 /* CLASS xtimer (funktions)                                              */
 /*----------------------------------------------------------------------*/
 
 long x_sys_time () {
-    struct timeb	tb;
-
-    ftime (&tb);
-    return (tb.time * 1000 + (unsigned long) tb.millitm);
+	auto now = std::chrono::system_clock::now();
+	auto now_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(now);
+	auto value = now_ms.time_since_epoch();
+	long duration = value.count();
+	return duration;
 }
 
 void xtimer::start () {
