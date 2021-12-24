@@ -1,0 +1,4 @@
+source/building.hc.cc:2:10: schwerwiegender Fehler: craft_def.h: Datei oder Verzeichnis nicht gefunden
+    2 | #include "craft_def.h"
+      |          ^~~~~~~~~~~~~
+Kompilierung beendet.
