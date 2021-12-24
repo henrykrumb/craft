@@ -416,22 +416,6 @@ void table::load () {
     /* close_load_file */      {
         fclose (f);
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 void table::rename (char new_name []) {
@@ -460,9 +444,6 @@ void table::copy (table *dest) {
     /* copy_row_data */      {
         memcpy (dest->data, data, data_size);
     };
-
-
-
 }
 
 int table::add_column (const char name [], int type) {
@@ -503,11 +484,6 @@ int table::add_column (const char name [], int type) {
     column_length    +=  /* col_size */   column_size  [col_no];
     was_write_access =  true;
     return col_no;
-
-
-
-
-
 }
 
 int table::column_no (char name []) {
@@ -597,14 +573,6 @@ int table::add_row () {
         errorstop (1, "table", "add_row", "too many rows", name);
     };
     return row_no;
-
-
-
-
-
-
-
-
 }
 
 void table::delete_row (int row_no) {
@@ -616,12 +584,6 @@ void table::delete_row (int row_no) {
     check_bound ( /* to_ptr */      row_no * column_length +  /* move_size */      (number_of_rows - row_no - 1) * column_length, row_no, 0, "delete_row");
     memmove     ( /* to_addr */      &data [row_no * column_length],  /* from_addr */      &data [(row_no+1) * column_length],  /* move_size */      (number_of_rows - row_no - 1) * column_length);
     number_of_rows--;
-
-
-
-
-
-
 }
 
 int table::insert_row (int row_no) {
@@ -638,13 +600,6 @@ int table::insert_row (int row_no) {
         memmove ( /* to_addr */      &data [(row_no+1) * column_length],  /* from_addr */      &data [row_no * column_length],  /* move_size */      (number_of_rows - row_no - 1) * column_length);
     };
     return row_no;
-
-
-
-
-
-
-
 }
 
 int table::read_int (int row_no, int column_no) {
@@ -653,9 +608,6 @@ int table::read_int (int row_no, int column_no) {
         errorstop (2, "table", "read_int", "wrong type", name);
     }
     return *(int*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]]);
-
-
-
 }
 
 float table::read_float (int row_no, int column_no) {
@@ -664,9 +616,6 @@ float table::read_float (int row_no, int column_no) {
         errorstop (2, "table", "read_float", "wrong type", name);
     }
     return *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]]);
-
-
-
 }
 
 char* table::read_text (int row_no, int column_no) {
@@ -675,9 +624,6 @@ char* table::read_text (int row_no, int column_no) {
         errorstop (2, "table", "read_text", "wrong type", name);
     }
     return &data [ /* col_ptr */      row_no * column_length + column_index [column_no]];
-
-
-
 }
 
 point table::read_point (int row_no, int column_no) {
@@ -691,9 +637,6 @@ point table::read_point (int row_no, int column_no) {
     p.y = *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+8]);
     p.z = *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+16]);
     return p;
-
-
-
 }
 
 cube table::read_cube (int row_no, int column_no) {
@@ -716,9 +659,6 @@ cube table::read_cube (int row_no, int column_no) {
     c.p3.y = *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+80]);
     c.p3.z = *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+88]);
     return c;
-
-
-
 }
 
 plane table::read_plane (int row_no, int column_no) {
@@ -738,9 +678,6 @@ plane table::read_plane (int row_no, int column_no) {
     p.p2.y = *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+56]);
     p.p2.z = *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+64]);
     return p;
-
-
-
 }
 
 config table::read_config (int row_no, int column_no) {
@@ -754,9 +691,6 @@ config table::read_config (int row_no, int column_no) {
         c.v [i] = *(float*)
                   (&data [ /* col_ptr */      row_no * column_length + column_index [column_no] + (i * sizeof (double))] +sizeof (int));
     return c;
-
-
-
 }
 
 vector table::read_vector (int row_no, int column_no) {
@@ -771,9 +705,6 @@ vector table::read_vector (int row_no, int column_no) {
     v.dz = *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+16]);
 
     return v;
-
-
-
 }
 
 void table::write (int row_no, int column_no, int value) {
@@ -783,9 +714,6 @@ void table::write (int row_no, int column_no, int value) {
         errorstop (3, "table", "write (int)", "wrong type", name);
     }
     *(int*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]]) = value;
-
-
-
 }
 
 void table::write (int row_no, int column_no, double value) {
@@ -801,9 +729,6 @@ void table::write (int row_no, int column_no, float value) {
         errorstop (3, "table", "write (float)", "wrong type", name);
     }
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]]) = value;
-
-
-
 }
 
 void table::write (int row_no, int column_no, char value []) {
@@ -822,11 +747,6 @@ void table::write (int row_no, int column_no, char value []) {
         }
     };
     strcpy (&data [ /* col_ptr */      row_no * column_length + column_index [column_no]], value);
-
-
-
-
-
 }
 
 void table::write (int row_no, int column_no, point value) {
@@ -838,9 +758,6 @@ void table::write (int row_no, int column_no, point value) {
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]])    = value.x;
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+8])  = value.y;
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+16]) = value.z;
-
-
-
 }
 
 void table::write (int row_no, int column_no, cube value) {
@@ -861,9 +778,6 @@ void table::write (int row_no, int column_no, cube value) {
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+72]) = value.p3.x;
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+80]) = value.p3.y;
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+88]) = value.p3.z;
-
-
-
 }
 
 
@@ -882,9 +796,6 @@ void table::write (int row_no, int column_no, plane value) {
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+48]) = value.p2.x;
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+56]) = value.p2.y;
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+64]) = value.p2.z;
-
-
-
 }
 
 void table::write (int row_no, int column_no, config value) {
@@ -897,9 +808,6 @@ void table::write (int row_no, int column_no, config value) {
     for (int i = 0; i < max_config_size; i++)
         *(float*)
         (&data [ /* col_ptr */      row_no * column_length + column_index [column_no] + (i * sizeof (double) + sizeof (int))]) = value.v [i];
-
-
-
 }
 
 void table::write (int row_no, int column_no, vector value) {
@@ -911,9 +819,6 @@ void table::write (int row_no, int column_no, vector value) {
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]])    = value.dx;
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+8])  = value.dy;
     *(float*)(&data [ /* col_ptr */      row_no * column_length + column_index [column_no]+16]) = value.dz;
-
-
-
 }
 
 int table::append (int column_no, int value) {
@@ -929,10 +834,6 @@ int table::append (int column_no, int value) {
     }
     write (row_no, column_no, value);
     return row_no;
-
-
-
-
 }
 
 int table::append (int column_no, double value) {
@@ -954,10 +855,6 @@ int table::append (int column_no, float value) {
     }
     write (row_no, column_no, value);
     return row_no;
-
-
-
-
 }
 
 int table::append (int column_no, char value []) {
@@ -973,10 +870,6 @@ int table::append (int column_no, char value []) {
     }
     write (row_no, column_no, value);
     return row_no;
-
-
-
-
 }
 
 int table::append (int column_no, point value) {
@@ -992,10 +885,6 @@ int table::append (int column_no, point value) {
     }
     write (row_no, column_no, value);
     return row_no;
-
-
-
-
 }
 
 int table::append (int column_no, cube value) {
@@ -1011,10 +900,6 @@ int table::append (int column_no, cube value) {
     }
     write (row_no, column_no, value);
     return row_no;
-
-
-
-
 }
 
 int table::append (int column_no, plane value) {
@@ -1030,10 +915,6 @@ int table::append (int column_no, plane value) {
     }
     write (row_no, column_no, value);
     return row_no;
-
-
-
-
 }
 
 int table::append (int column_no, config value) {
@@ -1049,10 +930,6 @@ int table::append (int column_no, config value) {
     }
     write (row_no, column_no, value);
     return row_no;
-
-
-
-
 }
 
 int table::append (int column_no, vector value) {
@@ -1068,10 +945,6 @@ int table::append (int column_no, vector value) {
     }
     write (row_no, column_no, value);
     return row_no;
-
-
-
-
 }
 
 /*----------------------------------------------------------------------*/
@@ -1205,16 +1078,6 @@ table *table_open (char name [],
         use_count [e]++;
     };
     return tables [e];
-
-
-
-
-
-
-
-
-
-
 }
 
 void table_close (table *t) {
@@ -1260,7 +1123,4 @@ void table_delete (table *t) {
         system  (cmd);
     };
     strcpy (names [t->id], "");
-
-
-
 }

@@ -58,17 +58,6 @@ void paramreader::read_sym (char sym [], bool &is_eof) {
         f [num_includes-1] = fopen (sym, "r");
         read_sym (sym, is_eof);
     };
-
-
-
-
-
-
-
-
-
-
-
 }
 
 paramreader::paramreader (const char param_file_name []) {
@@ -103,11 +92,6 @@ paramreader::paramreader (const char param_file_name []) {
             }
         };
     };
-
-
-
-
-
 }
 
 void paramreader::dump () {

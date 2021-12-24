@@ -76,14 +76,6 @@ void ship::refresh (int i) {
         };
         players [pno]->w_status->tick ();
     };
-
-
-
-
-
-
-
-
 }
 
 bool ship::enter (int id) {
@@ -99,8 +91,6 @@ bool ship::enter (int id) {
         num_man++;
         should_refresh  = true;
     };
-
-
 }
 
 bool ship::leave (int id) {
@@ -128,11 +118,6 @@ bool ship::leave (int id) {
     } else {
         return false;
     }
-
-
-
-
-
 }
 
 void ship:: eval () {
@@ -213,22 +198,6 @@ void ship:: eval () {
     } else {
         return;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 void ship::move (int dx, int dy) {
@@ -241,8 +210,6 @@ void ship::move (int dx, int dy) {
         objects->wx [id] = objects->x_center (objects->x [id]);
         objects->wy [id] = objects->y_center (objects->y [id]);
     };
-
-
 }
 
 void ship::hit (int idh, int power) {
@@ -283,12 +250,6 @@ void ship::hit (int idh, int power) {
             };
         };
     };
-
-
-
-
-
-
     /*
          {bool any_man = false;
 
@@ -297,12 +258,6 @@ void ship::hit (int idh, int power) {
           if (! any_man) choose_any;
          }.
     */
-
-
-
-
-
-
 }
 
 bool ship::empty () {
@@ -315,7 +270,6 @@ bool ship::empty () {
         }
     };
     return true;
-
 }
 
 bool ship::no_fighter () {
@@ -335,9 +289,6 @@ bool ship::no_fighter () {
         };
         return true;
     };
-
-
-
 }
 
 void ship::get_crew (int &n_worker, int &n_fighter, int &n_healer) {
@@ -399,7 +350,4 @@ bool ship_on_side (int xs, int ys, int ide, int xe, int ye) {
         }
         return true;
     };
-
-
-
 }

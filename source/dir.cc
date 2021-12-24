@@ -123,8 +123,6 @@ int fdir (int dx, int dy) {
     } else {
         return 6;
     }
-
-
 }
 
 int dir_back (int dir) {

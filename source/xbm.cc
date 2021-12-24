@@ -63,15 +63,6 @@ xbm::xbm (char name []) {
             };
     };
     fclose (xbm_data);
-
-
-
-
-
-
-
-
-
 }
 
 xbm::xbm (int bdx, int bdy) {
@@ -82,9 +73,6 @@ xbm::xbm (int bdx, int bdy) {
     /* alloc_data */      {
         data = new int [dx * dy];
     };
-
-
-
 }
 
 xbm::~xbm () {
@@ -149,16 +137,6 @@ void xbm::save (char name []) {
         fprintf (f, "};");
     };
     fclose (f);
-
-
-
-
-
-
-
-
-
-
 }
 
 void xbm::bit (int x, int y, int &b) {

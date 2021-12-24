@@ -43,13 +43,6 @@ void compress (char s []) {
             i--;
         };
     };
-
-
-
-
-
-
-
 }
 
 void strcat (char s [], int len, char app []) {
@@ -117,11 +110,6 @@ void changeall (char s           [],
             };
         };
     };
-
-
-
-
-
 }
 
 char *substring (char s [], int from) {
@@ -139,9 +127,6 @@ char *substring (char s [], int from) {
         strcpy (result, &s [from]);
     };
     return result;
-
-
-
 }
 
 char *substring (const char s [], int from, int to) {
@@ -164,9 +149,6 @@ char *substring (const char s [], int from, int to) {
         result [i-from] = 0;
     };
     return result;
-
-
-
 }
 
 int submatch (char s [], char p [], int &pos) {
@@ -189,8 +171,6 @@ int submatch (char s [], char p [], int &pos) {
         };
     };
     return matched_chars;
-
-
 }
 
 void delchar (char s [], int pos) {
@@ -212,9 +192,6 @@ void inschar (char s[], int pos, char n) {
         s [l] = n;
         s [l+1] = 0;
     };
-
-
-
 }
 
 int strpos (char s [], char p) {

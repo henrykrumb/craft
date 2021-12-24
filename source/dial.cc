@@ -80,13 +80,7 @@ dial::dial (win  *p_w,
             hist        = new history (title, hist_button);
         };
     };
-    w->tick ();
-
-
-
-
-
-
+    w->tick();
 }
 
 
@@ -126,12 +120,6 @@ dial::dial (win  *p_w,
         w->write (x, y + val_dy - 10, title);
     };
     w->tick ();
-
-
-
-
-
-
 }
 
 dial::~dial () {
@@ -163,9 +151,6 @@ void dial::set (int val) {
         sprintf          (s_value, "%d", val);
         g_value->refresh ();
     };
-
-
-
 }
 
 bool dial::eval (int &val) {
@@ -279,24 +264,5 @@ bool dial::eval (int &val) {
         return any_change;
     };
     return any_change;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 

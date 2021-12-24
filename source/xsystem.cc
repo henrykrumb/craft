@@ -5,6 +5,7 @@
 
 #define temp_file_name "jobs~"
 
+
 int batch (char cmd []) {
     int job_no = 0;
 
@@ -30,9 +31,4 @@ int batch (char cmd []) {
         };
     };
     return job_no;
-
-
-
-
-
 }

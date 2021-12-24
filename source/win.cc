@@ -34,8 +34,6 @@ bool bitmap_size (char name [], int &dx, int &dy) {
     } else {
         return false;
     }
-
-
 }
 
 /*----------------------------------------------------------------------*/
@@ -102,21 +100,13 @@ void text_size (char s [], const char font [], int &dx, int &dy, int &num_lines)
         XFreeFont     (display, font_info);
         XCloseDisplay (display);
     };
-
-
-
-
-
-
-
-
 }
 
 /*----------------------------------------------------------------------*/
 /* Default Handler (funktions)                                          */
 /*----------------------------------------------------------------------*/
 
-bool        win_handler_init = false;
+bool win_handler_init = false;
 paramreader *win_defaults;
 
 void init_default_handler () {
@@ -128,8 +118,6 @@ void init_default_handler () {
         }
         win_defaults = new paramreader (".windefaults");
     };
-
-
 }
 
 int win_default_i (int param, const char default_name []) {
@@ -382,8 +370,8 @@ polyline::~polyline () {
 }
 
 void polyline::add (int x, int y) {
-    p [n].x = x;
-    p [n].y = y;
+    p[n].x = x;
+    p[n].y = y;
     n++;
 }
 
@@ -411,7 +399,6 @@ win::win (const char title [],
           int  dy,
           bool enable,
           bool resize_enable)
-
 {
     /* perhaps_init_fix */      if (! fix_initialized)
         /* init_fix */      {
@@ -590,31 +577,6 @@ win::win (const char title [],
             font_info = XQueryFont (mydisplay, gcinfo.font);
         };
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 win::win (win  *parent,
@@ -804,29 +766,6 @@ win::win (win  *parent,
             font_info = XQueryFont (mydisplay, gcinfo.font);
         };
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 win::win (char title []) {
@@ -889,10 +828,6 @@ win::~win () {
         XDestroyWindow (mydisplay, mywindow);
         XCloseDisplay  (mydisplay);
     };
-
-
-
-
 }
 
 #undef red
@@ -1128,22 +1063,6 @@ void win::tick (bool pause) {
             };
         };
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 void win::iconify () {
@@ -1196,10 +1115,6 @@ char win::inchar (int &key, char *cntl) {
         };
         return c;
     };
-
-
-
-
 }
 
 bool win::on () {
@@ -1258,11 +1173,6 @@ bool win::mouse (int &x, int &y, int &xe, int &ye, int &button) {
     } else {
         return false;
     }
-
-
-
-
-
 }
 
 bool win::is_mouse (int &xe, int &ye, int &button) {
@@ -1277,9 +1187,6 @@ bool win::is_mouse (int &xe, int &ye, int &button) {
         ye = mouse_y;
         return false;
     };
-
-
-
 }
 
 void win::set_cursor (char name []) {
@@ -1324,8 +1231,6 @@ void win::set_cursor (int cursor) {
         c = XCreateFontCursor (mydisplay, cursor);
         XDefineCursor (mydisplay, mywindow, c);
     };
-
-
 }
 
 void win::set_background (int color) {
@@ -1409,17 +1314,6 @@ int win::win_color (int r, int g, int b) {
         };
         return best_color;
     };
-
-
-
-
-
-
-
-
-
-
-
 }
 
 void win::set_color (int r, int g, int b) {
@@ -1441,8 +1335,6 @@ void win::set_color (int color) {
         gcval.foreground = c;
         XChangeGC (mydisplay, mygc, GCForeground, &gcval);
     };
-
-
 }
 
 void win::function (int func) {
@@ -1453,8 +1345,6 @@ void win::function (int func) {
         gcval.function = func;
         XChangeGC  (mydisplay, mygc, GCFunction, &gcval);
     };
-
-
 }
 
 void win::pixel (int x, int y) {
@@ -1465,8 +1355,6 @@ void win::pixel (int x, int y) {
                     mygc,
                     x, y);
     };
-
-
 }
 
 void win::pixel (Pixmap p, int x, int y) {
@@ -1477,8 +1365,6 @@ void win::pixel (Pixmap p, int x, int y) {
                     mygc,
                     x, y);
     };
-
-
 }
 
 void win::draw (polyline *p) {
@@ -1491,8 +1377,6 @@ void win::draw (polyline *p) {
                     p->n,
                     CoordModeOrigin);
     };
-
-
 }
 
 void win::line (int x1, int y1, int x2, int y2) {
@@ -1503,8 +1387,6 @@ void win::line (int x1, int y1, int x2, int y2) {
                    mygc,
                    x1, y1, x2, y2);
     };
-
-
 }
 
 void win::box (int x1, int y1, int x2, int y2) {
@@ -1537,9 +1419,6 @@ void win::load_map (char name [], Pixmap &m, int &dx, int &dy) {
         dx = dxx;
         dy = dyy;
     };
-
-
-
 }
 
 void win::store_map (char name [], int x, int y, int dx, int dy) {
@@ -1632,11 +1511,6 @@ void win::show_map (int x, int y, char name []) {
                        0, 0, dx, dy, x, y, 1L);
         };
     };
-
-
-
-
-
 }
 
 void win::show_map (int x, int y, Pixmap m, int dx, int dy) {
