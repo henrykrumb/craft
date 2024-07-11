@@ -13,18 +13,17 @@
 
 #define max_cols 200
 
-class collist {
-public :
-
+class collist
+{
+public:
     int num_cols;
-    int col_no [max_cols];
+    int col_no[max_cols];
 
-    collist  (char list []);
-    ~collist ();
+    collist(char list[]);
+    ~collist();
 
-    int num      ();
-    int col      (int i);
-
+    int num();
+    int col(int i);
 };
 
 #endif

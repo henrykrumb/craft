@@ -14,24 +14,21 @@
 #ifndef compress_h
 #define compress_h
 
-class compress {
+class compress
+{
 public:
-
-    ppm  *act;
-    int  snr;
-    char name [128];
+    ppm *act;
+    int snr;
+    char name[128];
 
     FILE *f;
 
-    compress  ();
-    ~compress ();
+    compress();
+    ~compress();
 
-    char *frame_name (const char postfix []);
-    void encode      (char name    []);
-    void decode      (char name    []);
-
+    char *frame_name(const char postfix[]);
+    void encode(char name[]);
+    void decode(char name[]);
 };
 
-
 #endif
-

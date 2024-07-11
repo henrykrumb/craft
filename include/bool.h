@@ -10,11 +10,9 @@
 #endif
 
 #ifndef true
-#define true  1
+#define true 1
 #endif
 
 #ifndef bool
-#define bool  int
+#define bool int
 #endif
-
-

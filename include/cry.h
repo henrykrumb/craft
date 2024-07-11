@@ -10,6 +10,6 @@
 #ifndef cry_h
 #define cry_h
 
-void cry (char *func_name);
+void cry(char *func_name);
 
 #endif

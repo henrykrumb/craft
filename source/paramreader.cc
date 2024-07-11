@@ -18,121 +18,141 @@
 /* parameter check functionsons)                                        */
 /*----------------------------------------------------------------------*/
 
-void check_params (int num_params) {
+void check_params(int num_params)
+{
     if (num_params < 2)
-        /* handle_param_error */      {
-        system    ("sound /home/hua/sound/laughter");
-        errorstop (2, "paramreader", "Oh boy, better play golf");
+    /* handle_param_error */ {
+        system("sound /home/hua/sound/laughter");
+        errorstop(2, "paramreader", "Oh boy, better play golf");
     };
-
 }
 
 /*----------------------------------------------------------------------*/
 /* CLASS paramreader (functions)                                        */
 /*----------------------------------------------------------------------*/
 
-void paramreader::read_sym (char sym [], bool &is_eof) {
+void paramreader::read_sym(char sym[], bool &is_eof)
+{
     is_eof = false;
-    /* get_sym */      fscanf ( /* act_f */      f [num_includes - 1], "%79s", sym);
-    /* perhaps_skip_comment */      while ( /* is_comment */      (sym [0] == '#' && strcmp (sym, "#include") != 0))
-        /* skip_comment */      {
+    /* get_sym */ fscanf(/* act_f */ f[num_includes - 1], "%79s", sym);
+    /* perhaps_skip_comment */ while (/* is_comment */ (sym[0] == '#' && strcmp(sym, "#include") != 0))
+    /* skip_comment */ {
         char tc;
 
-        while ((tc = getc ( /* act_f */      f [num_includes - 1])) != '\n' && tc != '#')
-        {};
-        /* get_sym */      fscanf ( /* act_f */      f [num_includes - 1], "%79s", sym);
+        while ((tc = getc(/* act_f */ f[num_includes - 1])) != '\n' && tc != '#')
+        {
+        };
+        /* get_sym */ fscanf(/* act_f */ f[num_includes - 1], "%79s", sym);
     };
-    /* perhaps_eof */      if ( /* is_eof_sym */      (strcmp (name [num_params], "//") == 0))
-        /* pop_f */      {
+    /* perhaps_eof */ if (/* is_eof_sym */ (strcmp(name[num_params], "//") == 0))
+    /* pop_f */ {
         num_includes--;
-        fclose (f [num_includes]);
-        if  (num_includes == 0) {
+        fclose(f[num_includes]);
+        if (num_includes == 0)
+        {
             is_eof = true;
-        } else {
-            read_sym (sym, is_eof);
+        }
+        else
+        {
+            read_sym(sym, is_eof);
         }
     };
-    /* perhaps_include */      if (strcmp (sym, "#include") == 0)
-        /* push_f */      { /* get_sym */      fscanf ( /* act_f */      f [num_includes - 1], "%79s", sym);
+    /* perhaps_include */ if (strcmp(sym, "#include") == 0)
+    /* push_f */ { /* get_sym */
+        fscanf(/* act_f */ f[num_includes - 1], "%79s", sym);
         num_includes++;
-        f [num_includes-1] = fopen (sym, "r");
-        read_sym (sym, is_eof);
+        f[num_includes - 1] = fopen(sym, "r");
+        read_sym(sym, is_eof);
     };
 }
 
-paramreader::paramreader (const char param_file_name []) {
+paramreader::paramreader(const char param_file_name[])
+{
     bool is_eof = false;
 
     num_params = 0;
     /* open_param_file */
     {
-        char file_name [128];
+        char file_name[128];
 
-        strcpy (file_name, param_file_name);
-        strcat (file_name, ".params");
-        f [0]        = fopen (file_name, "r");
+        strcpy(file_name, param_file_name);
+        strcat(file_name, ".params");
+        f[0] = fopen(file_name, "r");
         num_includes = 1;
     };
-    /* perhaps_file_error */      if (f [0] == NULL) {
-        errorstop (1, "PARAMREADER",param_file_name,"parameter file unknown");
+    /* perhaps_file_error */ if (f[0] == NULL)
+    {
+        errorstop(1, "PARAMREADER", param_file_name, "parameter file unknown");
     }
-    /* read_operation */      {
-        read_sym (name  [num_params], is_eof);
-        if (! is_eof) {
-            read_sym (value [num_params], is_eof);
+    /* read_operation */ {
+        read_sym(name[num_params], is_eof);
+        if (!is_eof)
+        {
+            read_sym(value[num_params], is_eof);
         }
     };
-    while (! is_eof)
-        /* read_one_param */      {
+    while (!is_eof)
+    /* read_one_param */ {
         num_params++;
-        /* read_operation */      {
-            read_sym (name  [num_params], is_eof);
-            if (! is_eof) {
-                read_sym (value [num_params], is_eof);
+        /* read_operation */ {
+            read_sym(name[num_params], is_eof);
+            if (!is_eof)
+            {
+                read_sym(value[num_params], is_eof);
             }
         };
     };
 }
 
-void paramreader::dump () {
-    for (int i = 0; i < num_params; i++) {
-        printf (">%s< = >%s<\n", name [i], value [i]);
+void paramreader::dump()
+{
+    for (int i = 0; i < num_params; i++)
+    {
+        printf(">%s< = >%s<\n", name[i], value[i]);
     }
 }
 
-int paramreader::param_no (const char p_name []) {
+int paramreader::param_no(const char p_name[])
+{
     for (int no = 0; no < num_params; no++)
-        if (strcmp (name [no], p_name) == 0) {
+        if (strcmp(name[no], p_name) == 0)
+        {
             return no;
         }
-    printf ("paramreader error, symbol '%s' unknown\n", p_name);
-    exit   (1);
+    printf("paramreader error, symbol '%s' unknown\n", p_name);
+    exit(1);
     return (0);
 }
 
-char * paramreader::s_param (const char name []) {
-    return value [param_no (name)];
+char *paramreader::s_param(const char name[])
+{
+    return value[param_no(name)];
 }
 
-double paramreader::d_param (char name []) {
-    return atof (value [param_no (name)]);
+double paramreader::d_param(char name[])
+{
+    return atof(value[param_no(name)]);
 }
 
-int paramreader::i_param (const char name []) {
-    return atoi (value [param_no (name)]);
+int paramreader::i_param(const char name[])
+{
+    return atoi(value[param_no(name)]);
 }
 
-int paramreader::max_i_name () {
-    int max = - INT_MAX;
+int paramreader::max_i_name()
+{
+    int max = -INT_MAX;
 
-    for (int i = 0; i < num_params; i++) {
-        max = i_max (max, atoi (name [i]));
+    for (int i = 0; i < num_params; i++)
+    {
+        max = i_max(max, atoi(name[i]));
     }
     return max;
 }
 
-void paramreader::set (char p_name [], char p_value []) {
-    int pno = param_no (p_name);
+void paramreader::set(char p_name[], char p_value[])
+{
+    int pno = param_no(p_name);
 
-    strcpy (value [pno], p_value);
+    strcpy(value[pno], p_value);
 }

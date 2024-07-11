@@ -1,30 +1,36 @@
 #include "io.h"
 
-void ack () {
-    while (getchar () != '\n');
+void ack()
+{
+    while (getchar() != '\n')
+        ;
 }
 
-void s_ack (char msg []) {
-    printf ("%s ", msg);
-    ack    ();
+void s_ack(char msg[])
+{
+    printf("%s ", msg);
+    ack();
 }
 
-bool ok () {
-    return (getchar () != 'q');
+bool ok()
+{
+    return (getchar() != 'q');
 }
 
-double d_get (char msg []) {
+double d_get(char msg[])
+{
     float d;
 
-    printf ("%s", msg);
-    scanf  ("%f", &d);
-    return (double) d;
+    printf("%s", msg);
+    scanf("%f", &d);
+    return (double)d;
 }
 
-int i_get (char msg []) {
+int i_get(char msg[])
+{
     int i;
 
-    printf ("%s", msg);
-    scanf  ("%d", &i);
+    printf("%s", msg);
+    scanf("%d", &i);
     return i;
 }
